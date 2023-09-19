@@ -1,0 +1,50 @@
+---
+title: "STT380 Notes"
+author: "Ritik Jain"
+date: '2023-09-13'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#Generate Binomial samples (N (# of obeservations),n (# of trials), p (success%))
+rbinom(7,150,.05)
+```
+
+```{r}
+#### computing Binomial probabilities:
+
+choose(25,10)*(1/6)^10 *(5/6)^15  ## formula for winning exactly 10 times
+dbinom(10, 25, 1/6)               ## binomial function in R
+
+pbinom(10, 25, 1/6)   ### at most 10 times (cdf)
+
+```
+
+```{r}
+##### Approximating Binomial Distribution#####E
+#### Trail 1########
+par(mfrow=c(2,2))
+
+n=10
+x=seq(0,n, by=1)
+plot(x,dbinom(x,n,0.1),main = "n=10, p=0.1", xlim=c(0,10))
+```
+
+```{r}
+#probablilty it takes more than 7 rolls of a dice to roll a 6
+pgeom(7, 1/6)
+```
+
+```{r}
+#A couple really wants to have a girl child. They will continue to have babies until they get a girl and then stop. It is know that the chances of a girl child born to their linage is 0.4878. What is the probability that they will get a girl in their 4th trial?
+dgeom(3, .4878)
+```
+```{r}
+sum(dbinom(5:8, size = 1000, prob = (1/200)))
+1 - pbinom(7, size = 1000, prob = (1/200))
+```
+
